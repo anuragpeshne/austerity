@@ -6,14 +6,13 @@ ORIG_FILE="$HOSTS.orig"
 
 PLAY_START="0 10 * * * *"
 PLAY_STOP="0 14 * * * *"
-# * * * * *  command to execute
-# │ │ │ │ │
-# │ │ │ │ │
-# │ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday
-# │ │ │ └────────── month (1 - 12)
-# │ │ └─────────────── day of month (1 - 31)
-# │ └──────────────────── hour (0 - 23)
-# └───────────────────────── min (0 - 59)
+         # │ │  │ │ │
+         # │ │  │ │ │
+         # │ │  │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday)
+         # │ │  │ └────────── month (1 - 12)
+         # │ │  └─────────────── day of month (1 - 31)
+         # │ └──────────────────── hour (0 - 23)
+         # └───────────────────────── min (0 - 59)
 
 # some colors to script look cool
 RED='\033[0;31m'
