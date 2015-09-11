@@ -9,7 +9,7 @@ How To:
 PLAY_STOP="0 1 * * *"
            │ │ │ │ │
            │ │ │ │ │
-           │ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday
+           │ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday)
            │ │ │ └────────── month (1 - 12)
            │ │ └─────────────── day of month (1 - 31)
            │ └──────────────────── hour (0 - 23)
