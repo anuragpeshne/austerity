@@ -8,6 +8,7 @@ BROWN='\033[0;33m'
 GREEN='\033[1;32m'
 
 # declare hosts file
+SCRIPT_LOC="/Users/$SUDO_USER/code/austerity"
 HOSTS="/Users/anuragpeshne/temp/hosts" #"/etc/hosts"
 ORIG_FILE="$HOSTS.org"
 AUS_FILE="$HOSTS.aus"
@@ -18,7 +19,7 @@ function addToHosts {
     echo "127.0.0.1\t$1" >> $HOSTS
 }
 
-function readList {
+function addList {
     while read -r line; do
         name=$line
         addToHosts $name $1
@@ -31,8 +32,8 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-if [ -f $HOSTS.orig ]; then
-    echo "File $HOSTS.orig exists."
+if [ -f $ORIG_FILE ]; then
+    echo "File $ORIG_FILE exists."
 else
     echo -n "Backing up $HOSTS: "
     sudo cp "$HOSTS" "$ORIG_FILE"
@@ -42,6 +43,22 @@ else
     fi
     echo "${GREEN}✔ Backup created at $ORIG_FILE${NC}"
 
-    echo "adding banned list"
-    readList "./banList.txt"
+    echo -n "adding banned list"
+    addList "./banList.txt"
+    echo "${GREEN}✔ Done${NC}"
+fi
+
+if [! -f "./controlCron" ]; then
+    echo -e "0 10 * * * *\t$SCRIPT_LOC/control.sh" > ./controlCron
+fi
+
+if [! -f "./uncontrolCron"]; then
+    echo -e "0 12 * * * *\t$SCRIPT_LOC/uncontrol.sh" > ./uncontrolCron
+fi
+
+crontab -l | egrep '.'
+if [ $? -eq 0 ]; then
+    echo -n "Crontab found, backing it up..."
+    crontab -l > $SCRIPT_LOC/crontab.orig
+    echo "${GREEN}✔ Done${NC}"
 fi
