@@ -17,3 +17,5 @@ PLAY_STOP="0 1 * * *"
 ```
 * do `sudo ./install.sh`
 * If anything goes wrong: find backups at `/etc/hosts.orig` and `{repo}/crontab.orig`.
+
+Inspired by http://www.catonmat.net/blog/one-weird-old-productivity-tip/
