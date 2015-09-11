@@ -4,8 +4,8 @@
 HOSTS="/etc/hosts"
 ORIG_FILE="$HOSTS.orig"
 
-PLAY_START="0 10 * * * *"
-PLAY_STOP="0 14 * * * *"
+PLAY_START="0 10 * * *"
+PLAY_STOP="0 14 * * *"
          # │ │  │ │ │
          # │ │  │ │ │
          # │ │  │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday)
