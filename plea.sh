@@ -1,13 +1,17 @@
 #!/bin/bash
 
+set -e
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 . $DIR/constants.sh
 
 if [ -z $1 ]; then
-    let TIMEOUT="10"
+  let TIMEOUT=$((10*60))
 else
-    let TIMEOUT=$1
+  let TIMEOUT=$(($1*60))
 fi
 
 $DIR/uncontrol.sh
-at -f $DIR/control.sh now + $TIMEOUT minutes
+echo "Sites unblocked for $TIMEOUT seconds"
+sleep $TIMEOUT
+$DIR/control.sh
