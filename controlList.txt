@@ -3,3 +3,4 @@ news.ycombinator.com
 reddit.com
 linkedin.com
 facebook.com
+mashable.com
