@@ -12,6 +12,6 @@ else
 fi
 
 $DIR/uncontrol.sh
-echo "Sites unblocked for $TIMEOUT seconds"
+echo "$( date ): Sites unblocked for $TIMEOUT seconds"
 sleep $TIMEOUT
 $DIR/control.sh
