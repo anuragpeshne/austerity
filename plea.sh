@@ -15,3 +15,4 @@ $DIR/uncontrol.sh
 echo "$( date ): Sites unblocked for $TIMEOUT seconds"
 sleep $TIMEOUT
 $DIR/control.sh
+echo "$( date ): Blocked"
