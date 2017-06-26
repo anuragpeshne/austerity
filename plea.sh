@@ -11,8 +11,16 @@ else
   let TIMEOUT=$(($1*60))
 fi
 
+block()
+# function to block, call this when detect a ctrl-c
+{
+  $DIR/control.sh
+  echo "$( date ): Blocked"
+}
+
+trap block SIGINT
+
 $DIR/uncontrol.sh
 echo "$( date ): Sites unblocked for $TIMEOUT seconds"
 sleep $TIMEOUT
-$DIR/control.sh
-echo "$( date ): Blocked"
+block
